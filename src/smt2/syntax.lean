@@ -7,6 +7,7 @@ inductive special_constant : Type
 | number : int → special_constant
 | bitvec : nat → int → special_constant
 | string : string → special_constant
+| bool : bool → special_constant
 
 def hexdigit (n:nat) : char :=
 char.of_nat $
@@ -32,6 +33,8 @@ def special_constant.to_string : special_constant → string
     let zeros := list.repeat 0 (bitsz - list.length b) in
     let bits  := zeros ++ b in  -- Add leading zeros
     "#b" ++ bits.foldl (λ fmt bit, fmt ++ to_string bit) ""
+| (special_constant.bool b) :=
+    if b then "true" else "false"
 
 meta def special_constant.to_format : special_constant → format :=
 to_fmt ∘ special_constant.to_string
