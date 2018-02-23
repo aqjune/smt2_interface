@@ -109,8 +109,29 @@ term.apply "bvurem" [t, u]
 def bv_smod (t u : term) : term :=
 term.apply "bvsmod" [t, u]
 
+def bv_srem (t u : term) : term :=
+term.apply "bvsrem" [t, u]
+
 def bv_or (t u : term) : term :=
 term.apply "bvor" [t, u]
+
+def bv_and (t u : term) : term :=
+term.apply "bvand" [t, u]
+
+def bv_xor (t u : term) : term :=
+term.apply "bvxor" [t, u]
+
+def bv_sle (t u : term) : term :=
+term.apply "bvsle" [t, u]
+
+def bv_slt (t u : term) : term :=
+term.apply "bvslt" [t, u]
+
+def bv_ule (t u : term) : term :=
+term.apply "bvule" [t, u]
+
+def bv_ult (t u : term) : term :=
+term.apply "bvult" [t, u]
 -- End bitvec operations
 
 def lift_state {α : Type} (action : state (list smt2.cmd) α) : smt2.builder α :=
