@@ -87,6 +87,9 @@ term.apply "mod" [t, u]
 def neg (t : term) : term :=
 term.apply "-" [t]
 
+def ite (c t f : term) : term :=
+term.apply "ite" [c, t, f]
+
 def int_const (i : int) : term :=
 term.const $ special_constant.number i
 
