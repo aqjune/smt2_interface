@@ -76,6 +76,7 @@ inductive term : Type
 | qual_id : qualified_name → term
 | const : special_constant → term
 | apply : qualified_name → list term → term
+| apply2 : term → list term → term
 | letb : list (name × term) → term → term
 | forallq : list (symbol × sort) → term → term
 | existsq : list (symbol × sort) → term → term
@@ -94,6 +95,10 @@ meta def term.to_format : term → format
     let formatted_ts := format.join $ list.intersperse " "  $ ts.map term.to_format in
     format.bracket "(" ")" (
         qual_id.to_format ++ format.space ++ formatted_ts)
+| (term.apply2 f ts) :=
+    let formatted_ts := format.join $ list.intersperse " "  $ ts.map term.to_format in
+    format.bracket "(" ")" (
+        f.to_format ++ format.space ++ formatted_ts)
 | (term.letb ps ret) := "NYI"
 | (term.forallq bs body) :=
     "(forall (" ++

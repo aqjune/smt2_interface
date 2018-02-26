@@ -48,6 +48,12 @@ term.apply "or" ts
 def or2 (t u : term) : term :=
 or [t, u]
 
+def xor (ts : list term) : term :=
+term.apply "xor" ts
+
+def xor2 (t u : term) : term :=
+xor [t, u]
+
 def iff (t u : term) : term :=
 term.apply "iff" [t, u]
 
@@ -132,6 +138,21 @@ term.apply "bvule" [t, u]
 
 def bv_ult (t u : term) : term :=
 term.apply "bvult" [t, u]
+
+def bv_zext (bitsz : nat) (t : term) : term :=
+term.apply2 (term.apply "_"
+    [term.qual_id "zero_extend", term.const bitsz])
+    [t]
+
+def bv_sext (bitsz : nat) (t : term) : term :=
+term.apply2 (term.apply "_"
+    [term.qual_id "sign_extend", term.const bitsz])
+    [t]
+
+def bv_trunc (bitsz : nat) (t : term) : term :=
+term.apply2 (term.apply "_" [term.qual_id "extract",
+    term.const ↑(bitsz-1), term.const ↑0])
+    [t]
 -- End bitvec operations
 
 def lift_state {α : Type} (action : state (list smt2.cmd) α) : smt2.builder α :=
