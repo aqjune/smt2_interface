@@ -161,9 +161,9 @@ term.apply2 (term.apply "_"
     [term.qual_id "sign_extend", term.const bitsz])
     [t]
 
-def bv_trunc (bitsz : nat) (t : term) : term :=
+def bv_extract (upper lower : nat) (t : term) : term :=
 term.apply2 (term.apply "_" [term.qual_id "extract",
-    term.const ↑(bitsz-1), term.const ↑0])
+    term.const ↑upper, term.const ↑lower])
     [t]
 -- End bitvec operations
 
