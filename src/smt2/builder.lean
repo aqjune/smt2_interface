@@ -130,6 +130,15 @@ term.apply "bvand" [t, u]
 def bv_xor (t u : term) : term :=
 term.apply "bvxor" [t, u]
 
+def bv_shl (t u : term) : term :=
+term.apply "bvshl" [t, u]
+
+def bv_lshr (t u : term) : term :=
+term.apply "bvlshr" [t, u]
+
+def bv_ashr (t u : term) : term :=
+term.apply "bvashr" [t, u]
+
 def bv_sle (t u : term) : term :=
 term.apply "bvsle" [t, u]
 
