@@ -1,5 +1,4 @@
 import .syntax
-import init.category.transformers
 
 @[reducible] def smt2.builder :=
 except_t string (state (list smt2.cmd))
